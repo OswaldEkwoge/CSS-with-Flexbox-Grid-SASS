@@ -1,0 +1,71 @@
+/*Let's make sure the dimensions of any box include its border and padding, this gives us an easy way of sizing our elements.  */
+
+
+/* select all elements using *  */
+* {
+    box-sizing: border-box;
+}
+
+.container{
+    background-color: #07575B;
+    height: 200px;
+    margin: 10px;
+    /* using flexbox   */
+    display: flex;
+    flex-wrap: nowrap;  /* wrap fits all the boxes when the width of the container is reduced or not enough to fit all boxes. nowrap is the default value. */
+    flex-direction: row; /*default value. align items horizontally. if you move to a column, then vertical alignment. row-reverse, column-reverse  */
+    justify-content: center; /*flex-start, flex-end, center, space-around will create space aro und each flex item on the left and on the right. space-between. If we use flex-direction: column, and then justify-content, the space direction will change vertically.    */
+    
+    /*align items vertically inside their row.  */
+    align-items: stretch;  /*flex-start will push them on the top of the row, flex-end will push them to the bottom of the row, stretch (default) will stretch them from top to buttom, baseline will align the items veritically based on their first line.   */
+    
+    align-content: stretch; /*stretch, flex-start (row pushed to the top of the box), flex-end to the bottom, or center, space-between (create spaces between the rows), space-around (adds some space at the top and bottom)  */
+    
+    
+}
+
+
+
+
+/* select all divs inside the container  */
+.container > div{
+    background-color: #66A5AD;
+    color: aliceblue;
+    text-align: center;
+    padding: 20px;
+    margin: 1px;
+    border: 3px #C4DFE6 solid;
+    
+    /* We need to make the items in the flex box have equal lengths and widths and space occupied when the window is stretched or expanded.  */
+    flex-grow:1;     /*spacify the rate of growth of each item. This means they will grow at the rate of 1 for example. This is important in order to fill the window space. */
+    
+    flex-basis: auto;  /*flex-basis of 200 px means, the basis for growth start is 200px (the baseline for growth), flex-bases=auto is the minimum default value it can take. using 0px means our items won't shrink below 0px. auto contains all the contents. It is the minimum width to contain all the elements. flex-basis: initial => no growth of elements, even though they shrink. this is the default value. flex-basis: none (flex items are not flexible at all.) */
+    
+    /*Let's now make the items shrink to a certain minimum value instead of going to a new line when the flex-basis is reached.  */
+    
+    flex-shrink: 1;  /*this won't work if the container's flex-wrap is set to wrap. If we set all shrink properties to zero, no item shrinks at all. */
+    
+    /*some remaining space might be left when we get to our minimum shrink, or the width of the flex items might not fit the window when reduced to a certain extent. */
+    
+    /* Instead of setting each of the flex properties one by one, you can do it as follows: flex: 1 1 150px; 
+    flex:3; means the width is 3px and the rest 0px*
+    
+    flex: 1 2; means flex growth is 1 and flex shrink is 2.
+    flex: 1 10% means flex growth of 1 and flex basis (starting point) of 10% (percentage or number with a unit, 2px for example).
+    flex: 1 2  10% means: flex basis is 10%, flex growth is 1 and flex shrink is 2. flex growth always takes priority.
+    /
+}
+
+
+/*Here, we give apple a flex growth of 2, meaning it will overright the value in container > div and grow twice as fast as the remaining flex elements (in the case below, 4 times faster) */
+
+/*
+#apple{
+    flex-grow: 4;
+    flex-shrink: 2;  /*shrinking rate of apple will be twice as much. At some point, it won't shrink anymore, but the other items will continue since their shrinking rate is smaller than that of apple. if shrink is set to zero, apple won't shrink while the others do. */
+}
+
+*/
+
+
+
