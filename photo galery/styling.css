@@ -1,0 +1,29 @@
+/*Let's make sure the dimensions of any box includes its border and padding. This gives us an easy way of sizing our elements */
+
+*{
+    box-sizing: border-box;
+}
+
+/* convert the container to a flexbox    */
+.container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.column{
+    flex: 1;  /*each flex item should occupy the same width in a row  */
+    min-width: 300px;   /*minimu width in which each flex item can shrink   */
+}
+
+img{
+    width: 100%;
+    height: 20%;  /*make the image heights to be the same and evenly spread.   */
+}
+
+/*
+Should I use width?
+Yes. It is not essential, but it will help the browser render your page faster and more cleanly, especially when combined with the height element. Consider the example above — the CSS width is set to 100% and the height is set to auto. Until the browser is able to download the entire image, and check the file header for its size, how does the browser know how much height to allot for the image? In the absence of a width and height attribute, it doesn’t.
+
+Read more: https://html.com/attributes/img-width/#ixzz6RPzjTbHZ
+
+*/
